@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-ac = float(input("Enter Carrier Amplitude: "))
-fc = float(input("Enter Carrier Frequency: "))
-am = float(input("Enter Message Amplitude: "))
-fm = float(input("Enter Message Frequency: "))
-m_index = float(input("Enter Modulation Index: "))
+ac = 50.0
+fc = 50.0
+am = 5.0
+fm = 2.0
+m_index = 10.0
 t = np.linspace(0,1,1000)
 
 message_signal = am * np.cos(2* np.pi * fm * t)

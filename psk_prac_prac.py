@@ -7,37 +7,22 @@ fs = 1000
 bit_duration = 0.1
 bits = [1,0,1,1,0,0,1]
 
-num_samples = int(fs * len(bits) * bit_duration)
-t = np.linspace(0, len(bits) * bit_duration, num_samples, endpoint=False)
+num_samples = int(fs * len(bits) *bit_duration)
+t = np.linspace(0,len(bits) * bit_duration,num_samples,endpoint=False)
 message_signal = np.repeat(bits, int(fs * bit_duration))
 
-carrier_signal = ac* np.sin(2*np.pi*fc*t)
+carrier_signal = ac * np.sin(2 * np.pi * fc * t)
 
-phase_signal = np.where(message_signal == 1, 0 , np.pi)
-psk_signal = ac * np.sin((2*np.pi*fc*t) + phase_signal)
+phase_signal = np.where(message_signal == 1, 0, np.pi)
+psk_signal = ac * np.sin((2*np.pi * fc * t) + phase_signal)
 
-plt.figure(figsize=(10,10), constrained_layout=True)
-plt.suptitle(
-    f"Name: Gurpreet Singh Sandhu\n"
-    f"Roll No.: 2403143\n\n"
-    f"FSK Modulation  |  F0 = {ac} Hz  |  F1 = {fc} Hz",
-    fontsize=12,
-    fontweight='bold'
-)
-
-plt.subplot(2,1,1)
-plt.plot(t, message_signal)
-plt.xlabel("Time")
-plt.ylabel("bit value")
-plt.grid(True)
-
-# Note: No single carrier to plot for FSK, so we plot the dynamic frequency array
-plt.subplot(2,1,2)
-plt.plot(t, psk_signal)
-plt.xlabel("Time")
-plt.ylabel("Amplitude")
-plt.grid(True)
-
-
-
+plt.figure(figsize=(10,10), constrained_layout = True)
+plt.subplot(3,1,1)
+plt.plot(t,message_signal)
+plt.subplot(3,1,2)
+plt.plot(t,carrier_signal)
+plt.subplot(3,1,3)
+plt.plot(t,psk_signal)
 plt.show()
+
+
